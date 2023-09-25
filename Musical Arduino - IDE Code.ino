@@ -1,13 +1,14 @@
 #include <Ultrasonic.h>
 
+// Definições para funcionamento da sirene
 int azul = 2; // Led Azul
 int vermelho = 3; // Led Vermelho
-int tempo = 100; //variável usada para definir o tempo de acionamento do buzzer
-int frequencia = 0; //variável usada para armazenar a frequencia que será usada no acionamento do buzzer
-unsigned long millisTarefa1 = millis(); //variável que recebe o tempo atual em milissegundos
-int temp = 250; //variável usada para definir o tempo de acionamento do led
+int tempo = 100; // Variável usada para definir o tempo de acionamento do buzzer
+int frequencia = 0; // Variável usada para armazenar a frequencia que será usada no acionamento do buzzer
+unsigned long millisTarefa1 = millis(); // Variável que recebe o tempo atual em milissegundos
+int temp = 250; // Variável usada para definir o tempo de acionamento do led
 
-
+// Definindo as portas dos leds, buzzer e sensor ultrassônico
 int doo = 2; // Led Azul
 int re = 3; // Led Vermelho
 int mi = 4; // Led Verde
@@ -20,7 +21,7 @@ int porta_buz = 10; // Buzzer
 int pino_echo = 12; // Pino echo sensor ultrassônico
 int pino_trig = 11; // Pino trig sensor ultrassônico
 
-
+// Definindo as distâncias necessárias para funcionamento do sensor
 float leitura;
 float d;
 float d1 = 10;
@@ -36,7 +37,7 @@ int porta = "nota";
 
 Ultrasonic sensor_us(pino_trig, pino_echo);
 
-
+// Definindo as músicas por suas partituras e a duração de cada nota
 char* do_re_mi[] = {"Do", "Pausa", "Re", "Pausa", "Mi", "Pausa", "Fa", "Repete", "Fa", "Repete", "Fa", "Pausa", "Do", "Pausa", "Re", "Pausa", "Do", "Pausa", "Re", "Repete", "Re", "Repete", "Re", "Pausa", "Do", "Pausa", "Sol", "Pausa", "Fa", "Pausa", "Mi", "Repete", "Mi", "Repete", "Mi", "Pausa", "Do", "Pausa", "Re", "Pausa", "Mi", "Pausa", "Fa", "Repete", "Fa", "Repete", "Fa", "Fim"}; //Do re mi fa fa fa
 int duracao_do_re_mi[] = {250, 50, 250, 50, 250, 50, 500, 50, 250, 50, 500, 50, 250, 50, 250, 50, 250, 50, 500, 50, 250, 50, 500, 50, 250, 50, 250, 50, 250, 50, 500, 50, 250, 50, 500, 50, 250, 50, 250, 50, 250, 50, 500, 50, 250, 50, 500, 0};
 
@@ -95,7 +96,7 @@ void loop() {
 }
 
 
-
+// Função que toca as músicas com os leds e o buzzer
 void tocar(char* mus[], int tempo[]){
   int tom = 0;
   for(int i = 0; mus[i]!="Fim";i++){
@@ -133,6 +134,7 @@ void tocar(char* mus[], int tempo[]){
 }
 
 
+// Função dos leds da sirene
 void led_sirene() {
   if (millis() - millisTarefa1 > temp) { //Se o resultado da subtração de millis() - millisTarefa1 for maior que temp (250 milissegundo)
     digitalWrite(azul, HIGH); //Liga o Led azul
@@ -146,6 +148,7 @@ void led_sirene() {
   }
 }
 
+// Função da sirene
 void sirene() {
   for (int i = 0; i < 3; i++){
     for (frequencia = 150; frequencia < 1800; frequencia += 1) { //Define frequencia igual a 150; verifica se frequencia é menor que 1800; realiza a soma frequencia = frequencia + 1
