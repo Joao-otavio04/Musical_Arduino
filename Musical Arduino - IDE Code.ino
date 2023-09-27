@@ -87,7 +87,7 @@ void loop() {
     digitalWrite(porta_buz, HIGH);
     delay(3000);
   }
-  else if (d5 <= d && d <= d6) {
+  else if (d4 <= d && d <= d5) {
     sirene();
     digitalWrite(vermelho, LOW);
     digitalWrite(azul, LOW);
