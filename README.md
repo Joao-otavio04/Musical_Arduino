@@ -5,7 +5,7 @@ O Arduíno Musical foi um projeto pensado para um evento de portas abertas da fa
 ## Programação
 
 - O buzzer foi programado a partir da função "tocar", a qual recebe duas listas: a primeira é uma lista com as notas musicais, pausas e repetições de notas seguidas, enquanto a segunda seria o tempo de cada um desses toques, em milissegundos, na mesma ordem da lista anterior. Com essas listas, o buzzer tocaria em determinada frequência ou então seria desligado.
-- o sensor ultrassônico foi programado para a seleção da lista que ativaria a função "tocar" por meio da distância de algo mais próximo frente à este, já que para cada música (4 foram escolhidas, além da sirene policial) havia duas listas já citadas anteriormente. A distância poderia ser escolhida colocando qualquer tipo de material (até mesmo a mão) frente ao sensor.
+- O sensor ultrassônico foi programado para a seleção da lista que ativaria a função "tocar" por meio da distância de algo mais próximo frente à este, já que para cada música (4 foram escolhidas, além da sirene policial) havia duas listas já citadas anteriormente. A distância poderia ser escolhida colocando qualquer tipo de material (até mesmo a mão) frente ao sensor. É importante ressaltar que o sensor só funciona com uma biblioteca instalada no software para este.
 - Os LEDs também foram programados na função "tocar", já que para cada nota musical um dos LEDs, organizados na ordem das notas, deveria acender.
 - Um dos toques escolhidos foi uma sirene policial, que teve de ser programada com duas funções diferentes, uma para os LEDs azul e vermelho, e outra para o aumento da freqûencia do buzzer gradativamente.
 - Além das funções, foram definidas variáveis e as portas a serem utilizadas no Arduino.
