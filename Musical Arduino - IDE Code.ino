@@ -16,7 +16,6 @@ int fa = 5; // Led Branco
 int sol = 6; // Led Vermelho
 int la = 7; // Led Amarelo
 int si = 8; // Led Verde
-int botao = 9; // Botão
 int porta_buz = 10; // Buzzer
 int pino_echo = 12; // Pino echo sensor ultrassônico
 int pino_trig = 11; // Pino trig sensor ultrassônico
@@ -25,13 +24,13 @@ int pino_trig = 11; // Pino trig sensor ultrassônico
 float leitura;
 float d;
 float d1 = 10;
-float d2 = 16;
-float d3 = 22;
-float d4 = 28;
-float d5 = 34;
-float d6 = 40;
-float d7 = 46;
-float d8 = 52;
+float d2 = 20;
+float d3 = 30;
+float d4 = 40;
+float d5 = 50;
+float d6 = 60;
+float d7 = 70;
+float d8 = 80;
 
 int porta = "nota";
 
@@ -48,7 +47,11 @@ char* star_wars[] = {"La","Pausa", "La", "Pausa", "La", "Pausa", "Fa", "Do", "La
 int duracao_star_wars[] = {400, 100, 400, 100, 400, 100, 300, 200, 300, 100, 300, 200, 300, 200, 400, 100, 400, 100, 400, 100, 300, 300, 200, 100 , 300, 300, 200, 200, 400, 50, 400, 50, 400, 50, 400, 50, 300, 50, 300, 200, 200, 200};
 
 char* harry_potter[] = {"Mi", "Pausa", "La", "Pausa", "Do", "Pausa", "Si", "Pausa", "La", "Pausa", "Mi", "Pausa", "Re", "Pausa", "Si", "Pausa", "La", "Pausa", "Do", "Pausa", "Si", "Pausa", "Sol", "Pausa", "La#", "Pausa", "Mi", "Repete", "Mi", "Pausa", "La", "Pausa", "Do", "Pausa", "Si", "Pausa", "La", "Pausa", "Mi", "Pausa", "Fa", "Pausa", "Sol#", "Repete", "Sol#", "Pausa", "Do#", "Pausa", "Sol", "Pausa", "Mi", "Pausa", "Re#", "Repete", "Re#", "Pausa", "Do", "Pausa", "La", "Fim"};
-int duracao_harry_potter[] = {400, 50, 600, 50, 200, 50, 400, 50, 800, 50, 400, 50, 1000, 50, 1000, 50, 600, 50, 200, 50, 400, 50, 800, 50, 400, 50, 1000, 1000, 400, 50, 600, 50, 200, 50, 400, 50, 800, 50, 400, 50, 800, 50, 400, 50, 600, 50, 400, 50, 600, 50, 200, 50, 400, 50, 800, 50, 400, 50, 800, 0};
+int duracao_harry_potter[] = {400, 50, 600, 50, 200, 50, 400, 50, 800, 50, 400, 50, 1000, 50, 1000, 50, 600, 50, 200, 50, 400, 50, 800, 50, 400, 50, 1000, 1000, 400, 50, 600, 50, 200, 50, 400, 50, 800, 50, 400, 50, 800, 50, 400, 50, 600, 50, 400, 50, 600, 50, 200, 50, 400, 50, 800, 50, 400, 50, 800, 3000};
+
+
+char* dragon_ball[] = {"Sol", "Repete", "Sol", "Pausa", "Mi", "Pausa", "Fa", "Pausa", "Sol", "Pausa", "La", "Pausa", "Sol", "Pausa", "Fa", "Pausa", "Mi", "Pausa", "Re", "Pausa", "Mi", "Repete", "Mi", "Pausa", "Do", "Pausa", "Re", "Pausa", "Mi", "Pausa", "Fa", "Pausa", "Mi", "Pausa", "Re", "Pausa", "Do", "Pausa", "Si", "Pausa", "La", "Repete", "La", "Pausa", "Do", "Pausa", "La", "Pausa", "Sol", "Pausa", "Do", "Pausa", "Re", "Pausa", "Mi", "Pausa", "Fa", "Pausa", "Mi", "Pausa", "Re", "Pausa", "Do", "Pausa", "Re", "Repete", "Re", "Pausa", "Do", "Pausa", "Si", "Pausa", "Do", "Fim"};
+int duracao_dragon_ball[] = {500, 5, 500, 5, 250, 5, 250, 5, 250, 5, 250, 5, 500, 5, 500, 5, 500, 5, 500, 5, 500, 5, 500, 5, 250, 5, 250, 5, 250, 5, 250, 5, 500, 5, 500, 5, 500, 5, 500, 500, 250, 5, 250, 5, 500, 5, 500, 5, 1000, 5, 500, 5, 250, 5, 250, 5, 500, 5, 500, 5, 500, 5, 250, 5, 250, 5, 1000, 5, 500, 5, 500, 5, 3000, 0};
 
 
 void setup() {
@@ -84,16 +87,20 @@ void loop() {
   }
   else if (d3 <= d && d <= d4) {
     tocar(harry_potter, duracao_harry_potter);
+  }
+  else if (d4 <= d && d <= d5) {
+    tocar(dragon_ball, duracao_dragon_ball);
     digitalWrite(porta_buz, HIGH);
     delay(3000);
   }
-  else if (d4 <= d && d <= d5) {
+  else if (d5 <= d && d <= d6) {
     sirene();
     digitalWrite(vermelho, LOW);
     digitalWrite(azul, LOW);
   }
   else {
   digitalWrite(porta_buz, HIGH);
+  piscar_leds();
   }
 
 
@@ -123,8 +130,8 @@ void tocar(char* mus[], int tempo[]){
     if(mus[i] == "Sol#") tom = 1669, porta = sol;
     if(mus[i] == "La#") tom = 1875, porta = la;
 
-    if(mus[i] == "Pausa") tom = 30000, porta_buz = 1, digitalWrite(porta_buz, HIGH);
-    if(mus[i] == "Repete") tom = 30000, porta_buz = 1, digitalWrite(porta_buz, HIGH), porta = 15;
+    if(mus[i] == "Pausa") tom = 40000, porta_buz = 1, digitalWrite(porta_buz, HIGH);
+    if(mus[i] == "Repete") tom = 40000, porta_buz = 1, digitalWrite(porta_buz, HIGH), porta = 15;
 
     digitalWrite(porta, HIGH);
     if (tom > 0) {
@@ -168,4 +175,45 @@ void sirene() {
       delay(1); //delay de 1 milissegundos
     }
   }
+}
+
+
+void piscar_leds() {
+  digitalWrite(doo, HIGH);
+  delay(70);
+  digitalWrite(doo, LOW);
+  digitalWrite(re, HIGH);
+  delay(70);
+  digitalWrite(re, LOW);
+  digitalWrite(mi, HIGH);
+  delay(70);
+  digitalWrite(mi, LOW);
+  digitalWrite(fa, HIGH);
+  delay(70);
+  digitalWrite(fa, LOW);
+  digitalWrite(sol, HIGH);
+  delay(70);
+  digitalWrite(sol, LOW);
+  digitalWrite(la, HIGH);
+  delay(70);
+  digitalWrite(la, LOW);
+  digitalWrite(si, HIGH);
+  delay(70);
+  digitalWrite(si, LOW);
+  digitalWrite(la, HIGH);
+  delay(70);
+  digitalWrite(la, LOW);
+  digitalWrite(sol, HIGH);
+  delay(70);
+  digitalWrite(sol, LOW);
+  digitalWrite(fa, HIGH);
+  delay(70);
+  digitalWrite(fa, LOW);
+  digitalWrite(mi, HIGH);
+  delay(70);
+  digitalWrite(mi, LOW);
+  digitalWrite(re, HIGH);
+  delay(70);
+  digitalWrite(re, LOW);
+  digitalWrite(doo, HIGH);
 }
