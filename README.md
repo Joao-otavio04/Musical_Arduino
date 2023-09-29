@@ -12,4 +12,4 @@ O Arduíno Musical foi um projeto pensado para um evento de portas abertas da fa
 
 ## Circuito
 
-Um modelo do circuito utilizado está disponível para visualização no link a seguir: *LINK*
+Um modelo do circuito utilizado está disponível para visualização no link a seguir: *https://www.tinkercad.com/things/d6lGpOUjG3w*
