@@ -1,21 +1,21 @@
 #include <Ultrasonic.h>
 
 
-int azul = 2; // Led Azul
-int vermelho = 3; // Led Vermelho
+int azul = 8; // Led Azul
+int vermelho = 7; // Led Vermelho
 int tempo = 100; //variável usada para definir o tempo de acionamento do buzzer
 int frequencia = 0; //variável usada para armazenar a frequencia que será usada no acionamento do buzzer
 unsigned long millisTarefa1 = millis(); //variável que recebe o tempo atual em milissegundos
 int temp = 250; //variável usada para definir o tempo de acionamento do led
 
 
-int doo = 2; // Led Azul
-int re = 3; // Led Vermelho
-int mi = 4; // Led Verde
+int doo = 8; // Led Azul
+int re = 7; // Led Vermelho
+int mi = 6; // Led Verde
 int fa = 5; // Led Branco
-int sol = 6; // Led Vermelho
-int la = 7; // Led Amarelo
-int si = 8; // Led Verde
+int sol = 4; // Led Vermelho
+int la = 3; // Led Amarelo
+int si = 2; // Led Verde
 int porta_buz = 10; // Buzzer
 int pino_echo = 12; // Pino echo sensor ultrassônico
 int pino_trig = 11; // Pino trig sensor ultrassônico
@@ -23,12 +23,12 @@ int pino_trig = 11; // Pino trig sensor ultrassônico
 
 float leitura;
 float d;
-float d1 = 10;
-float d2 = 20;
-float d3 = 30;
-float d4 = 40;
-float d5 = 50;
-float d6 = 60;
+float d1 = 9.5;
+float d2 = 19.5;
+float d3 = 29;
+float d4 = 38.5;
+float d5 = 48.5;
+float d6 = 58;
 float d7 = 70;
 float d8 = 80;
 
@@ -130,8 +130,8 @@ void tocar(char* mus[], int tempo[]){
     if(mus[i] == "Sol#") tom = 1669, porta = sol;
     if(mus[i] == "La#") tom = 1875, porta = la;
 
-    if(mus[i] == "Pausa") tom = 40000, porta_buz = 1, digitalWrite(porta_buz, HIGH);
-    if(mus[i] == "Repete") tom = 40000, porta_buz = 1, digitalWrite(porta_buz, HIGH), porta = 15;
+    if(mus[i] == "Pausa") tom = 30000, porta_buz = 9, digitalWrite(porta_buz, HIGH);
+    if(mus[i] == "Repete") tom = 30000, porta_buz = 9, digitalWrite(porta_buz, HIGH), porta = 15;
 
     digitalWrite(porta, HIGH);
     if (tom > 0) {
@@ -140,7 +140,7 @@ void tocar(char* mus[], int tempo[]){
       digitalWrite(porta_buz, HIGH);
     } 
     else {
-      digitalWrite(porta_buz, HIGH);
+      digitalWrite(porta_buz, LOW);
       delay(tempo[i]);
     }
     digitalWrite(porta, LOW);
@@ -216,4 +216,5 @@ void piscar_leds() {
   delay(70);
   digitalWrite(re, LOW);
   digitalWrite(doo, HIGH);
+  digitalWrite(doo, LOW);
 }
